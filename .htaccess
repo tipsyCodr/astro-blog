@@ -1,6 +1,17 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Redirect to www and https (replace with your actual domain)
+  RewriteCond %{HTTP_HOST} ^yourdomain\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.yourdomain.com/$1 [L,R=301]
+
+  # Route requests to dist folder
+  RewriteCond %{HTTP_HOST} ^(www\.)?yourdomain\.com$ [NC]
+  RewriteCond %{REQUEST_URI} !^/dist/
+  RewriteRule ^(.*)$ /dist/$1 [L]
+
+  # Ensure index.html is served for SPA routing
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)$ dist/$1 [L]
+  RewriteRule ^(.*)$ /dist/index.html [L]
 </IfModule>
