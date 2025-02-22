@@ -2,11 +2,11 @@
   RewriteEngine On
 
   # Redirect to www and https (replace with your actual domain)
-  RewriteCond %{HTTP_HOST} ^yourdomain\.com$ [NC]
-  RewriteRule ^(.*)$ https://www.yourdomain.com/$1 [L,R=301]
+  RewriteCond %{HTTP_HOST} ^https://seagreen-scorpion-194717.hostingersite.com\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.https://seagreen-scorpion-194717.hostingersite.com/$1 [L,R=301]
 
   # Route requests to dist folder
-  RewriteCond %{HTTP_HOST} ^(www\.)?yourdomain\.com$ [NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?seagreen-scorpion-194717.hostingersite.com\.com$ [NC]
   RewriteCond %{REQUEST_URI} !^/dist/
   RewriteRule ^(.*)$ /dist/$1 [L]
 
