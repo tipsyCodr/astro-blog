@@ -1,17 +1,7 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine On
-
-  # Redirect to www and https (replace with your actual domain)
-  RewriteCond %{HTTP_HOST} ^https://seagreen-scorpion-194717.hostingersite.com\.com$ [NC]
-  RewriteRule ^(.*)$ https://www.https://seagreen-scorpion-194717.hostingersite.com/$1 [L,R=301]
-
-  # Route requests to dist folder
-  RewriteCond %{HTTP_HOST} ^(www\.)?seagreen-scorpion-194717.hostingersite.com\.com$ [NC]
-  RewriteCond %{REQUEST_URI} !^/dist/
-  RewriteRule ^(.*)$ /dist/$1 [L]
-
-  # Ensure index.html is served for SPA routing
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)$ /dist/index.html [L]
+  RewriteEngine on
+  RewriteCond %{HTTP_HOST} ^seagreen-scorpion-194717.hostingersite.com$ [NC,OR]
+  RewriteCond %{HTTP_HOST} ^www.seagreen-scorpion-194717.hostingersite.com$
+  RewriteCond %{REQUEST_URI} !dist/
+  RewriteRule (.*) /dist/$1 [L]
 </IfModule>
